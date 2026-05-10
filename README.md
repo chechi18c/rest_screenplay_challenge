@@ -1,7 +1,3 @@
-# rest_screenplay_challenge
-This repository contain the tyba's rest_screenplay_challenge.
-
-
 ## 🛠️ Technologies and Dependencies
 This project is built with a modern automated testing architecture using the **Screenplay Pattern** to ensure the code is scalable, maintainable, and highly readable.
 The project runs on **Java 21** and is managed via **Gradle**.
