@@ -14,9 +14,9 @@ import qa.rest.screenplay.challenge.models.response.user.CreateUserResponse;
 public class UserCreationResult implements Question<CreateUserResponse> {
 
     /**
-     * Factory method to obtain a new SqiCreationResult question instance.
+     * Factory method to create a new UserCreationResult question instance.
      *
-     * @return A question that resolves to the SQI response data.
+     * @return A question that resolves to the CreateUserResponse data.
      */
     public static Question<CreateUserResponse> wasSuccessful() {
         return new UserCreationResult();
