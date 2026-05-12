@@ -6,7 +6,10 @@ import static org.hamcrest.Matchers.equalTo;
 import static qa.rest.screenplay.challenge.utils.constants.AssertionMessages.STATUS_CODE;
 
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import qa.rest.screenplay.challenge.models.request.CreateUserRequest;
 import qa.rest.screenplay.challenge.questions.generics.ResponseCode;
@@ -17,10 +20,12 @@ import qa.rest.screenplay.challenge.tasks.user.CreateUser;
  * user login. This suite uses Serenity BDD for writing automated acceptance tests.
  */
 @ExtendWith(SerenityJUnit5Extension.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TestCreateUser extends BaseTestSuite {
 
     private final String name = "Jane";
-    private final String job = "QA Engineer";
+    private final String email = "jane@example.com";
+    private final String role = "admin";
 
     /**
      * Tests the user creation functionality. Constructs a {@link CreateUserRequest}. Asserts that
@@ -29,10 +34,11 @@ class TestCreateUser extends BaseTestSuite {
      * tests.
      */
     @Test
+    @Order(1)
     void createUser() {
 
         CreateUserRequest createUserRequest =
-                CreateUserRequest.builder().name(name).job(job).build();
+                CreateUserRequest.builder().name(name).email(email).role(role).build();
 
         tyber.attemptsTo(CreateUser.with(createUserRequest));
         tyber.should(seeThat(STATUS_CODE.getMessage(), ResponseCode.was(), equalTo(SC_CREATED)));

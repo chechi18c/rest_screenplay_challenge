@@ -13,7 +13,7 @@ import lombok.Data;
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateUserResponse {
+public class UpdateUserResponse {
 
     @JsonProperty("name")
     String name;

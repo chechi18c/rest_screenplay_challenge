@@ -6,16 +6,16 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * Data Transfer Object representing the payload for user creation requests.
+ * Data Transfer Object representing the payload for user update requests.
  *
- * <p>Leverages the Builder pattern to facilitate the creation user. This class ensures that only
+ * <p>Leverages the Builder pattern to facilitate the update user. This class ensures that only
  * populated fields are serialized into the JSON request body by using {@link
  * JsonInclude.Include#NON_NULL}, maintaining a clean interface with backend REST services.
  */
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreateUserRequest {
+public class UpdateUserRequest {
 
     @JsonProperty("name")
     private String name;

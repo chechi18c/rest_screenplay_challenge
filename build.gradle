@@ -88,10 +88,10 @@ spotless {
 }
 
 tasks.register('cleanLog') {
-    def logFile = file('tyba_auto_backend.log')
+    def logFile = file('qa_rest_screenplay_challenge.log')
     doLast {
         logFile.delete()
-        println "Deleted tyba_auto_backend.log file"
+        println "Deleted qa_rest_screenplay_challenge.log file"
     }
 }
 

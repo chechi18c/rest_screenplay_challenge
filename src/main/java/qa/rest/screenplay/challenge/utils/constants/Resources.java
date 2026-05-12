@@ -13,9 +13,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Resources {
     CREATE_USER("/users"),
-    GET_USER("users"),
-    UPDATE_USER("users/{id}"),
-    DELETE_USER("users/{id}");
+    GET_USER("/users"),
+    UPDATE_USER("/users/2"),
+    DELETE_USER("/users/2");
 
     private final String value;
 }

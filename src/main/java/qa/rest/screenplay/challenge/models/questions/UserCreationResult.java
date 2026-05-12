@@ -6,10 +6,10 @@ import net.serenitybdd.screenplay.Question;
 import qa.rest.screenplay.challenge.models.response.user.CreateUserResponse;
 
 /**
- * Screenplay Question for retrieving and parsing the result of an SQI creation API call.
+ * Screenplay Question for retrieving and parsing the result of a user creation API call.
  *
  * <p>Wraps the extraction of the last response body, mapping it to the {@link CreateUserResponse}
- * model to enable fluent assertions on the created investment goals.
+ * model to enable fluent assertions on the created user.
  */
 public class UserCreationResult implements Question<CreateUserResponse> {
 
