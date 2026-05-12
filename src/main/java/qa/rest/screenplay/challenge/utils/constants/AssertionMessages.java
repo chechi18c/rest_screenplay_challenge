@@ -6,9 +6,7 @@ import lombok.Getter;
 /**
  * Constants for assertion messages used across the automation suite.
  *
- * <p>
- * This enum centralizes descriptive messages and keys used in test assertions
- * to ensure
+ * <p>This enum centralizes descriptive messages and keys used in test assertions to ensure
  * consistency and readability in test reports and failure logs.
  */
 @Getter

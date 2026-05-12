@@ -3,15 +3,12 @@
  */
 package qa.rest.screenplay.challenge.serenityJUnit5;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 class TestGetUser {
     // Code temporarily commented out to avoid compilation errors on unused class
     /*
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
-    */
+     * @Test void appHasAGreeting() {
+     * App classUnderTest = new App();
+     * assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+     * }
+     */
 }
