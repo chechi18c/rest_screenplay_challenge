@@ -7,4 +7,5 @@
 # Ignore Serenity report directory
 /target/
 
-
+# Ignore Serenity report directory
+/target/site/serenity/

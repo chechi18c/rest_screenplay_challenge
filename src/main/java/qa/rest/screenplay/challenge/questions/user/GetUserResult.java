@@ -1,4 +1,4 @@
-package qa.rest.screenplay.challenge.models.questions;
+package qa.rest.screenplay.challenge.questions.user;
 
 import java.util.List;
 import java.util.Map;

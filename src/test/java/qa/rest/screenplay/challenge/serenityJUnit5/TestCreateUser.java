@@ -14,6 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import qa.rest.screenplay.challenge.models.request.CreateUserRequest;
 import qa.rest.screenplay.challenge.questions.generics.ResponseCode;
 import qa.rest.screenplay.challenge.tasks.user.CreateUser;
+import qa.rest.screenplay.challenge.utils.data.DataGenerator;
 
 /**
  * Test suite for authentication-related functionalities, including email/phone existence checks and
@@ -23,9 +24,9 @@ import qa.rest.screenplay.challenge.tasks.user.CreateUser;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TestCreateUser extends BaseTestSuite {
 
-    private final String name = "Jane";
-    private final String email = "jane@example.com";
-    private final String role = "admin";
+    private final String name = DataGenerator.generateRandomName();
+    private final String email = DataGenerator.generateRandomEmail();
+    private final String role = DataGenerator.generateRandomRole();
 
     /**
      * Tests the user creation functionality. Constructs a {@link CreateUserRequest}. Asserts that

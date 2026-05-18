@@ -11,18 +11,19 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
-import qa.rest.screenplay.challenge.models.questions.UserUpdateResult;
 import qa.rest.screenplay.challenge.models.request.UpdateUserRequest;
 import qa.rest.screenplay.challenge.questions.generics.ResponseCode;
+import qa.rest.screenplay.challenge.questions.user.UserUpdateResult;
 import qa.rest.screenplay.challenge.tasks.user.UpdateUser;
+import qa.rest.screenplay.challenge.utils.constants.Users;
+import qa.rest.screenplay.challenge.utils.data.DataGenerator;
 
 @ExtendWith(SerenityJUnit5Extension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestUpdateUser extends BaseTestSuite {
 
-    private final String name = "Cecilia";
-    private final String email = "chechi@yopmail.com";
-    private final String role = "superadmin";
+    private final String name = DataGenerator.generateRandomName();
+    private final String email = DataGenerator.generateRandomEmail();
 
     /**
      * Tests the user creation functionality. Constructs a {@link UpdateUserRequest}. Asserts that
@@ -35,14 +36,18 @@ public class TestUpdateUser extends BaseTestSuite {
     void updateUser() {
 
         UpdateUserRequest updateUserRequest =
-                UpdateUserRequest.builder().name(name).email(email).role(role).build();
+                UpdateUserRequest.builder()
+                        .name(name)
+                        .email(email)
+                        .role(Users.USER_ROLE.getValue())
+                        .build();
 
         tyber.attemptsTo(UpdateUser.with(updateUserRequest));
         tyber.should(seeThat(STATUS_CODE.getMessage(), ResponseCode.was(), equalTo(SC_OK)));
         tyber.should(
                 seeThat(
                         "The User role",
-                        actor -> UserUpdateResult.wasSuccessful().answeredBy(actor).getRole(),
-                        equalTo(role)));
+                        actor -> UserUpdateResult.wasSuccessful().answeredBy(actor).get("role"),
+                        equalTo(Users.USER_ROLE.getValue())));
     }
 }

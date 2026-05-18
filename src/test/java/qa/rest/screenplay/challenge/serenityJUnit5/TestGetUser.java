@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
-import qa.rest.screenplay.challenge.models.questions.GetUserResult;
 import qa.rest.screenplay.challenge.questions.generics.ResponseCode;
+import qa.rest.screenplay.challenge.questions.user.GetUserResult;
 import qa.rest.screenplay.challenge.tasks.user.GetUser;
 
 @ExtendWith(SerenityJUnit5Extension.class)

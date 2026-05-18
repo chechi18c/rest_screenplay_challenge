@@ -4,6 +4,7 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.apache.http.HttpStatus.SC_NO_CONTENT;
 import static org.hamcrest.Matchers.equalTo;
 import static qa.rest.screenplay.challenge.utils.constants.AssertionMessages.STATUS_CODE;
+import static qa.rest.screenplay.challenge.utils.constants.Users.USER_ID;
 
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import org.junit.jupiter.api.MethodOrderer;
@@ -23,8 +24,6 @@ import qa.rest.screenplay.challenge.tasks.user.DeleteUser;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TestDeleteUser extends BaseTestSuite {
 
-    private final String id = "2";
-
     /**
      * Tests the user deletion functionality. Constructs a {@link DeleteUserRequest}. Asserts that
      * the status code of the response is OK (200) and that a delete user response is returned. The
@@ -35,7 +34,8 @@ class TestDeleteUser extends BaseTestSuite {
     @Order(4)
     void deleteUser() {
 
-        DeleteUserRequest deleteUserRequest = DeleteUserRequest.builder().id(id).build();
+        DeleteUserRequest deleteUserRequest =
+                DeleteUserRequest.builder().userId(USER_ID.getValue()).build();
 
         tyber.attemptsTo(DeleteUser.with(deleteUserRequest));
         tyber.should(seeThat(STATUS_CODE.getMessage(), ResponseCode.was(), equalTo(SC_NO_CONTENT)));
