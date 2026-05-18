@@ -8,6 +8,7 @@ import lombok.Builder;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
+import qa.rest.screenplay.challenge.hooks.EnvironmentConfig;
 import qa.rest.screenplay.challenge.interactions.Post;
 import qa.rest.screenplay.challenge.models.request.CreateUserRequest;
 
@@ -21,7 +22,6 @@ import qa.rest.screenplay.challenge.models.request.CreateUserRequest;
 public class CreateUser implements Task {
 
     private final CreateUserRequest createUserRequest;
-    private final String API_KEY = "reqres_b2933e2f11814e89b1fb24eba3019a49";
 
     /**
      * @param createUserRequest The {@link CreateUserRequest} containing the details for the new
@@ -58,7 +58,7 @@ public class CreateUser implements Task {
                         .with(
                                 request ->
                                         request.contentType(ContentType.JSON)
-                                                .header("x-api-key", API_KEY)
+                                                .header("x-api-key", EnvironmentConfig.getApiKey())
                                                 .body(createUserRequest)));
     }
 }

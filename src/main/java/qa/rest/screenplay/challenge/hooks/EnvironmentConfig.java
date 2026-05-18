@@ -10,6 +10,7 @@ import net.thucydides.model.util.EnvironmentVariables;
  * configurations based on the active Serenity environment.
  */
 public class EnvironmentConfig {
+
     /** Private constructor to prevent instantiation of this utility class. */
     private EnvironmentConfig() {}
 
@@ -47,7 +48,7 @@ public class EnvironmentConfig {
      * fetching any property specified by its full path in the 'serenity.conf' file.
      *
      * @param path The full path to the property (e.g., "my.custom.property").
-     * @return The property value as a String, or null if not found.
+     * @return The value of the custom property as a String.
      */
     public static String getCustomProperty(String path) {
         return EnvironmentSpecificConfiguration.from(variables).getProperty(path);
