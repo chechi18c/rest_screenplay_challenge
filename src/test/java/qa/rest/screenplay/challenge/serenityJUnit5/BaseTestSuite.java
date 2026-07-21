@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
-import qa.rest.screenplay.challenge.hooks.EnvironmentConfig;
+import qa.rest.screenplay.challenge.hooks.*;
 
 /**
  * Base suite for automated tests using Serenity BDD and Screenplay pattern.

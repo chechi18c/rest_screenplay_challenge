@@ -8,7 +8,7 @@ import lombok.Builder;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
-import qa.rest.screenplay.challenge.hooks.EnvironmentConfig;
+import qa.rest.screenplay.challenge.hooks.*;
 import qa.rest.screenplay.challenge.interactions.Post;
 import qa.rest.screenplay.challenge.models.request.CreateUserRequest;
 
