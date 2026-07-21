@@ -3,7 +3,8 @@ package qa.rest.screenplay.challenge.serenityJUnit5;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.equalTo;
-import static qa.rest.screenplay.challenge.utils.constants.AssertionMessages.STATUS_CODE;
+import static qa.rest.screenplay.challenge.questions.user.ResponseBody.*;
+import static qa.rest.screenplay.challenge.questions.user.ServerResponse.statusCode;
 
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import org.junit.jupiter.api.MethodOrderer;
@@ -12,8 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import qa.rest.screenplay.challenge.models.request.UpdateUserRequest;
-import qa.rest.screenplay.challenge.questions.generics.ResponseCode;
-import qa.rest.screenplay.challenge.questions.user.UserUpdateResult;
 import qa.rest.screenplay.challenge.tasks.user.UpdateUser;
 import qa.rest.screenplay.challenge.utils.constants.Users;
 import qa.rest.screenplay.challenge.utils.data.DataGenerator;
@@ -43,11 +42,11 @@ public class TestUpdateUser extends BaseTestSuite {
                         .build();
 
         tyber.attemptsTo(UpdateUser.with(updateUserRequest));
-        tyber.should(seeThat(STATUS_CODE.getMessage(), ResponseCode.was(), equalTo(SC_OK)));
+        tyber.should(seeThat("The status code is: ", statusCode(), equalTo(SC_OK)));
         tyber.should(
                 seeThat(
                         "The User role",
-                        actor -> UserUpdateResult.wasSuccessful().answeredBy(actor).get("role"),
+                        actor -> asMap().answeredBy(actor).get("role"),
                         equalTo(Users.USER_ROLE.getValue())));
     }
 }

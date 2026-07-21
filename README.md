@@ -39,3 +39,11 @@ Once the tests have finished running, you can generate the aggregated report (or
 bash
 ./gradlew aggregate
 The detailed HTML report will be automatically generated and hosted in the following path: target/site/serenity/index.html (or build/reports/serenity/index.html depending on your final Serenity configuration).
+
+
+
+
+##
+./gradlew openSerenityReport      
+./gradlew clean test aggregate --info
+./gradlew clean compileJava          

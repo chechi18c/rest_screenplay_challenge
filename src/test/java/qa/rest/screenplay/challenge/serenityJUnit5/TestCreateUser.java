@@ -3,7 +3,7 @@ package qa.rest.screenplay.challenge.serenityJUnit5;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.hamcrest.Matchers.equalTo;
-import static qa.rest.screenplay.challenge.utils.constants.AssertionMessages.STATUS_CODE;
+import static qa.rest.screenplay.challenge.questions.user.ServerResponse.statusCode;
 
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import org.junit.jupiter.api.MethodOrderer;
@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import qa.rest.screenplay.challenge.models.request.CreateUserRequest;
-import qa.rest.screenplay.challenge.questions.generics.ResponseCode;
 import qa.rest.screenplay.challenge.tasks.user.CreateUser;
 import qa.rest.screenplay.challenge.utils.data.DataGenerator;
 
@@ -42,6 +41,6 @@ class TestCreateUser extends BaseTestSuite {
                 CreateUserRequest.builder().name(name).email(email).role(role).build();
 
         tyber.attemptsTo(CreateUser.with(createUserRequest));
-        tyber.should(seeThat(STATUS_CODE.getMessage(), ResponseCode.was(), equalTo(SC_CREATED)));
+        tyber.should(seeThat("The status code is:", statusCode(), equalTo(SC_CREATED)));
     }
 }

@@ -3,7 +3,7 @@ package qa.rest.screenplay.challenge.serenityJUnit5;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.apache.http.HttpStatus.SC_NO_CONTENT;
 import static org.hamcrest.Matchers.equalTo;
-import static qa.rest.screenplay.challenge.utils.constants.AssertionMessages.STATUS_CODE;
+import static qa.rest.screenplay.challenge.questions.user.ServerResponse.statusCode;
 import static qa.rest.screenplay.challenge.utils.constants.Users.USER_ID;
 
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import qa.rest.screenplay.challenge.models.request.DeleteUserRequest;
-import qa.rest.screenplay.challenge.questions.generics.ResponseCode;
 import qa.rest.screenplay.challenge.tasks.user.DeleteUser;
 
 /**
@@ -38,6 +37,6 @@ class TestDeleteUser extends BaseTestSuite {
                 DeleteUserRequest.builder().userId(USER_ID.getValue()).build();
 
         tyber.attemptsTo(DeleteUser.with(deleteUserRequest));
-        tyber.should(seeThat(STATUS_CODE.getMessage(), ResponseCode.was(), equalTo(SC_NO_CONTENT)));
+        tyber.should(seeThat("The status code is", statusCode(), equalTo(SC_NO_CONTENT)));
     }
 }
